@@ -5,6 +5,7 @@
  */
 package model;
 
+import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -16,14 +17,14 @@ import utils.HibernateUtil;
  *
  * @author pdavila
  */
-public class ClassDAO<T> {
+public class ClassProductDAO<T> {
     
     private Session session;
     private Transaction tx;
     
     private Class p;
     
-    public ClassDAO(Class<T> p) {
+    public ClassProductDAO(Class<T> p) {
         this.p = p;
     }
 
@@ -69,11 +70,11 @@ public class ClassDAO<T> {
         }
     }
     
-    public T obtain(int object_id) throws HibernateException {
+    public T obtain(int idObject) throws HibernateException {
         T object = null;
         try {
             initOperation();
-            object = (T) session.get(p, object_id);
+            object = (T) session.get(p, idObject);
         } finally {
             session.close();
         }

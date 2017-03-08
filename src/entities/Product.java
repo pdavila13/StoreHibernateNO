@@ -22,20 +22,27 @@ public class Product {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int product_id;
+    private long product_id;
     
     private String product_name;
     
     @Transient
     private String product_trademark;
     
-    private double prodcut_price;
+    private double product_price;
 
-    public int getProduct_id() {
+    public Product(long product_id, String product_name, String product_trademark, double product_price) {
+        this.product_id = product_id;
+        this.product_name = product_name;
+        this.product_trademark = product_trademark;
+        this.product_price = product_price;
+    }
+    
+    public long getProduct_id() {
         return product_id;
     }
 
-    private void setProduct_id(int product_id) {
+    private void setProduct_id(long product_id) {
         this.product_id = product_id;
     }
 
@@ -55,11 +62,11 @@ public class Product {
         this.product_trademark = product_trademark;
     }
 
-    public double getProdcut_price() {
-        return prodcut_price;
+    public double getProduct_price() {
+        return product_price;
     }
 
-    public void setProdcut_price(double prodcut_price) {
-        this.prodcut_price = prodcut_price;
+    public void setProduct_price(double product_price) {
+        this.product_price = product_price;
     }
 }
