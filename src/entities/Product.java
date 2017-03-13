@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -30,6 +31,9 @@ public class Product {
     private String product_trademark;
     
     private double product_price;
+    
+    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
+    private Stock product_stock_id;
 
     public Product(long product_id, String product_name, String product_trademark, double product_price) {
         this.product_id = product_id;
@@ -68,5 +72,13 @@ public class Product {
 
     public void setProduct_price(double product_price) {
         this.product_price = product_price;
+    }
+
+    public Stock getProduct_stock_id() {
+        return product_stock_id;
+    }
+
+    public void setProduct_stock_id(Stock product_stock_id) {
+        this.product_stock_id = product_stock_id;
     }
 }
