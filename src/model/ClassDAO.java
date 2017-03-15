@@ -5,7 +5,6 @@
  */
 package model;
 
-import entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -17,17 +16,17 @@ import utils.HibernateUtil;
  *
  * @author pdavila
  */
-public class ClassProductDAO<T> {
+public class ClassDAO<T> {
     
     private Session session;
     private Transaction tx;
     
     private Class p;
     
-    public ClassProductDAO(Class<T> p) {
+    public ClassDAO(Class<T> p) {
         this.p = p;
     }
-
+    
     public long store(T object) throws HibernateException {
         long id = 0;
         

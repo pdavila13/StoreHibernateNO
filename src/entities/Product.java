@@ -23,62 +23,88 @@ public class Product {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long product_id;
+    private int _1_product_id;
     
-    private String product_name;
+    private String _2_product_name;
+    
+    private String _3_product_trademark;
+    
+    private double _4_product_price;
     
     @Transient
-    private String product_trademark;
+    private Stock _5_stored;
     
-    private double product_price;
+    @Transient
+    private Category _6_belongs;
     
-    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
-    private Stock product_stock_id;
+    @Transient
+    private Client _7_sold;
 
-    public Product(long product_id, String product_name, String product_trademark, double product_price) {
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.product_trademark = product_trademark;
-        this.product_price = product_price;
+    public Product() {
+        //
+    }
+
+    public Product(int _1_product_id, String _2_product_name, String _3_product_trademark, double _4_product_price) {
+        this._1_product_id = _1_product_id;
+        this._2_product_name = _2_product_name;
+        this._3_product_trademark = _3_product_trademark;
+        this._4_product_price = _4_product_price;
     }
     
     public long getProduct_id() {
-        return product_id;
+        return _1_product_id;
     }
 
-    private void setProduct_id(long product_id) {
-        this.product_id = product_id;
+    private void set1_product_id(int _1_product_id) {
+        this._1_product_id = _1_product_id;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String get2_product_name() {
+        return _2_product_name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void set2_product_name(String _2_product_name) {
+        this._2_product_name = _2_product_name;
     }
 
-    public String getProduct_trademark() {
-        return product_trademark;
+    public String get3_product_trademark() {
+        return _3_product_trademark;
     }
 
-    public void setProduct_trademark(String product_trademark) {
-        this.product_trademark = product_trademark;
+    public void set3_product_trademark(String _3_product_trademark) {
+        this._3_product_trademark = _3_product_trademark;
     }
 
-    public double getProduct_price() {
-        return product_price;
+    public double get4_product_price() {
+        return _4_product_price;
     }
 
-    public void setProduct_price(double product_price) {
-        this.product_price = product_price;
+    public void set4_product_price(double _4_product_price) {
+        this._4_product_price = _4_product_price;
+    }
+    
+    public Stock get5_stored() {
+        return _5_stored;
     }
 
-    public Stock getProduct_stock_id() {
-        return product_stock_id;
+    public void set5_stored(Stock _5_stored) {
+        this._5_stored = _5_stored;
     }
 
-    public void setProduct_stock_id(Stock product_stock_id) {
-        this.product_stock_id = product_stock_id;
+    public Category get6_belongs() {
+        return _6_belongs;
+    }
+
+    public void set6_belongs(Category _6_belongs) {
+        this._6_belongs = _6_belongs;
+    }
+
+    public Client get7_sold() {
+        return _7_sold;
+    }
+
+    public void set7_sold(Client _7_sold) {
+        this._7_sold = _7_sold;
+        _7_sold.set7_buy(this);
     }
 }

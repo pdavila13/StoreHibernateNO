@@ -5,64 +5,99 @@
  */
 package entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 /**
  *
  * @author pdavila
  */
+@Entity
+@Table(name="clients")  
 public class Client {
     
-    private int client_id;
-    private String client_official_id;
-    private String client_fullName;
-    private String client_email;
-    private String client_address;
-    private String client_telephoneNumber;
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int _1_client_id;
+    
+    private String _2_client_official_id;
+    private String _3_client_fullName;
+    private String _4_client_email;
+    private String _5_client_address;
+    private String _6_client_telephoneNumber;
+    
+    @Transient
+    private Product _7_buy;
 
-    public int getClient_id() {
-        return client_id;
+    public Client () {
+        
+    }
+    
+    public Client(int _1_client_id, String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
+        this._1_client_id = _1_client_id;
+        this._2_client_official_id = _2_client_official_id;
+        this._3_client_fullName = _3_client_fullName;
+        this._4_client_email = _4_client_email;
+        this._5_client_address = _5_client_address;
+        this._6_client_telephoneNumber = _6_client_telephoneNumber;
+    }
+    public int get1_client_id() {
+        return _1_client_id;
     }
 
-    private void setClient_id(int client_id) {
-        this.client_id = client_id;
+    private void set1_client_id(int _1_client_id) {
+        this._1_client_id = _1_client_id;
     }
 
-    public String getClient_official_id() {
-        return client_official_id;
+    public String get2_client_official_id() {
+        return _2_client_official_id;
     }
 
-    public void setClient_official_id(String client_official_id) {
-        this.client_official_id = client_official_id;
+    public void set2_client_official_id(String _2_client_official_id) {
+        this._2_client_official_id = _2_client_official_id;
     }
 
-    public String getClient_fullName() {
-        return client_fullName;
+    public String get3_client_fullName() {
+        return _3_client_fullName;
     }
 
-    public void setClient_fullName(String client_fullName) {
-        this.client_fullName = client_fullName;
+    public void set3_client_fullName(String _3_client_fullName) {
+        this._3_client_fullName = _3_client_fullName;
     }
 
-    public String getClient_email() {
-        return client_email;
+    public String get4_client_email() {
+        return _4_client_email;
     }
 
-    public void setClient_email(String client_email) {
-        this.client_email = client_email;
+    public void set4_client_email(String _4_client_email) {
+        this._4_client_email = _4_client_email;
     }
 
-    public String getClient_address() {
-        return client_address;
+    public String get5_client_address() {
+        return _5_client_address;
     }
 
-    public void setClient_address(String client_address) {
-        this.client_address = client_address;
+    public void set5_client_address(String _5_client_address) {
+        this._5_client_address = _5_client_address;
     }
 
-    public String getClient_telephoneNumber() {
-        return client_telephoneNumber;
+    public String get6_client_telephoneNumber() {
+        return _6_client_telephoneNumber;
     }
 
-    public void setClient_telephoneNumber(String client_telephoneNumber) {
-        this.client_telephoneNumber = client_telephoneNumber;
+    public void set6_client_telephoneNumber(String _6_client_telephoneNumber) {
+        this._6_client_telephoneNumber = _6_client_telephoneNumber;
     }        
+
+    public Product get7_buy() {
+        return _7_buy;
+    }
+
+    public void set7_buy(Product _7_buy) {
+        this._7_buy = _7_buy;
+    }
 }
