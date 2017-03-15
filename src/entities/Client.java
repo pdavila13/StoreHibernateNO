@@ -34,7 +34,7 @@ public class Client {
     private Product _7_buy;
 
     public Client () {
-        
+        //
     }
     
     public Client(int _1_client_id, String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {

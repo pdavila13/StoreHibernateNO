@@ -37,8 +37,7 @@ public class StoreHibernate {
         //Edit and update
         p2.set3_product_trademark("MSI");
         ClassProductDAO.update(p2);
-        
-        
+               
         //Recovered
         productRecovered = (Product) ClassProductDAO.obtain(Integer.valueOf(String.valueOf(destroy_id)));
         System.out.println("Recuperem a " + productRecovered.get2_product_name());
@@ -48,7 +47,7 @@ public class StoreHibernate {
         
         //Obstain list
         List<Product> listProducts = ClassProductDAO.obtainList();
-        System.out.println("Hi ha " + listProducts.size() + "productes a la base de dades");
+        System.out.println("Hi ha " + listProducts.size() + " productes a la base de dades");
         
         for (Product p : listProducts) {
             System.out.println(" -> " + p.get2_product_name());
