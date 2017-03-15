@@ -5,6 +5,7 @@
  */
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,21 +24,28 @@ public class Product {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="product_id")
     private int _1_product_id;
     
+    @Column(name="product_name")
     private String _2_product_name;
     
+    @Column(name="product_trademark")
     private String _3_product_trademark;
     
+    @Column(name="product_price")
     private double _4_product_price;
     
     @Transient
+    @Column(name="product_stored_stock")
     private Stock _5_stored;
     
     @Transient
+    @Column(name="product_belongs_category")
     private Category _6_belongs;
     
     @Transient
+    @Column(name="product_sold_client")
     private Client _7_sold;
 
     public Product() {

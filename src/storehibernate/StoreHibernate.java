@@ -22,7 +22,8 @@ public class StoreHibernate {
         // TODO code application logic here
         ClassDAO ClassProductDAO = new ClassDAO(Product.class);
         Product productRecovered = null;
-        long destroy_id = 0;
+        long destroy_product_id = 0;
+        long destroy_client_id = 0;
         
         //Created
         Product p1 = new Product(1,"Processador","INTEL",153.56);
@@ -30,7 +31,7 @@ public class StoreHibernate {
         Product p3 = new Product(3,"Hard disk","WD",76.80);
         
         //Save
-        destroy_id = ClassProductDAO.store(p1);
+        destroy_product_id = ClassProductDAO.store(p1);
         ClassProductDAO.store(p2);
         ClassProductDAO.store(p3);
         
@@ -39,7 +40,7 @@ public class StoreHibernate {
         ClassProductDAO.update(p2);
                
         //Recovered
-        productRecovered = (Product) ClassProductDAO.obtain(Integer.valueOf(String.valueOf(destroy_id)));
+        productRecovered = (Product) ClassProductDAO.obtain(Integer.valueOf(String.valueOf(destroy_product_id)));
         System.out.println("Recuperem a " + productRecovered.get2_product_name());
         
         //Delete

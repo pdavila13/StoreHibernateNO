@@ -5,12 +5,27 @@
  */
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author pdavila
  */
+@Entity
+@Table(name="stocks")   
 public class Stock {
+    
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="stock_id")
     private int _1_stock_id;
+    
+    @Column(name="stock_total")
     private int _2_stock_total;
 
     public int get1_stock_id() {

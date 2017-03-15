@@ -5,13 +5,27 @@
  */
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author pdavila
  */
+@Entity
+@Table(name="categories")   
 public class Category {
     
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="category_id")
     private int _1_category_id;
+    
+    @Column(name="category_name")
     private String _2_category_name;
 
     public int get1_category_id() {

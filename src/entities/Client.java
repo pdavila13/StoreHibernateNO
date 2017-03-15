@@ -5,6 +5,7 @@
  */
 package entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,15 +23,26 @@ public class Client {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="client_id")
     private int _1_client_id;
     
+    @Column(name="client_official_id")
     private String _2_client_official_id;
+    
+    @Column(name="client_fullName")
     private String _3_client_fullName;
+    
+    @Column(name="client_email")
     private String _4_client_email;
+    
+    @Column(name="client_address")
     private String _5_client_address;
+    
+    @Column(name="client_telephoneNumber")
     private String _6_client_telephoneNumber;
     
     @Transient
+    @Column(name="client_buy_product")
     private Product _7_buy;
 
     public Client () {
