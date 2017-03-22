@@ -17,7 +17,7 @@ import utils.HibernateUtil;
  */
 public class Model {
     
-    private static Session session = HibernateUtil.getSessionFactory().openSession();
+    //private static Session session = HibernateUtil.getSessionFactory().openSession();
     private ArrayList<Product> products = new ArrayList();
     private ClassDAO product = new ClassDAO(Product.class);
     
@@ -33,7 +33,7 @@ public class Model {
         Product p = new Product(product_name,product_trademark,product_price);
         
         try {
-            product.store(product);
+            product.store(p);
         } catch(HibernateException he) {
             tryException(he);
         }
@@ -41,13 +41,14 @@ public class Model {
     }
     
     public void modifyProduct(int product_id, String product_name, String product_trademark, double product_price) {
-        Product updated = null;
+        Product modified = null;
         
         try {
-            updated = (Product) product.obtain(product_id);
-            updated.set2_product_name(product_name);
-            updated.set3_product_trademark(product_trademark);
-            updated.set4_product_price(product_price);
+            modified = (Product) product.obtain(product_id);
+            modified.set2_product_name(product_name);
+            modified.set3_product_trademark(product_trademark);
+            modified.set4_product_price(product_price);
+            product.update(modified);
         } catch(HibernateException he) {
             tryException(he);
         }
@@ -72,9 +73,5 @@ public class Model {
     
     private void tryException(HibernateException he) {
         System.out.println(he.getMessage());
-    }
-    
-    public void exitSession() {
-        session.close();
     }
 }

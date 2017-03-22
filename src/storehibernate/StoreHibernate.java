@@ -6,6 +6,8 @@
 package storehibernate;
 
 import controller.Controller;
+import entities.Product;
+import model.ClassDAO;
 import model.Model;
 import views.View;
 
@@ -15,14 +17,15 @@ import views.View;
  */
 public class StoreHibernate {
     
-    static Model model = new Model();
-    static View view = new View();
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ClassDAO<Product> model = new ClassDAO<>(Product.class);
+        View view = new View();
         
         new Controller(view,model);
         

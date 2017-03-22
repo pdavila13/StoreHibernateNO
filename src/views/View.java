@@ -5,6 +5,13 @@
  */
 package views;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author pdavila
@@ -16,6 +23,8 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+        
+        this.setVisible(true);
     }
 
     /**
@@ -246,10 +255,34 @@ public class View extends javax.swing.JFrame {
             }
         });
     }
+    
+    public JButton getCreateProductButton() { return jButtonCreate; }
+    public JButton getDeleteProductButton() { return jButtonDelete; }   
+    public JButton getModifyProductButton() { return jButtonModify; } 
+    public JButton getUpdateProductButton() { return jButtonUpdate; }
+    public JButton getExitButton() { return exitButton; }
+ 
+    public JLabel getProductNameLabel() { return jLabelProductName; }
+    public JLabel getProductPriceLabel() { return jLabelProductPrice; }
+    public JLabel getProductTraceMarkLabel() { return jLabelProductTraceMark; }
+    public JLabel getProductTitleLabel() { return jLabelTitle; }
+    
+    public JPanel getProductButtonsPanel() { return jPanelButtons; }
+    public JPanel getProductContentPanel() { return jPanelContent; }
+    public JPanel getProductProductPanel() { return jPanelProduct; }
+    public JPanel getProductTitlePanel() { return jPanelTitle; }
+    
+    public JScrollPane getProductPanel() { return jScrollPaneProduct; }
+    
+    public JTable getProductTable() { return jTableProduct; }
+    
+    public JTextField getProductNameTextField() { return jTextFieldProductName; }
+    public JTextField getProductPriceTextField() { return jTextFieldProductPrice; }
+    public JTextField getProductTraceMarkTextField() { return jTextFieldProductTraceMark; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton jButtonCreate;
+    public javax.swing.JButton jButtonCreate;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JButton jButtonModify;
     private javax.swing.JButton jButtonUpdate;
