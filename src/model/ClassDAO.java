@@ -25,6 +25,7 @@ public class ClassDAO<T> {
     
     public ClassDAO(Class<T> p) {
         this.p = p;
+        this.session = session;
     }
     
     public long store(T object) throws HibernateException {
