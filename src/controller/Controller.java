@@ -11,8 +11,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -29,7 +27,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import model.ClassDAO;
-import model.Model;
 import views.View;
 
 /**
@@ -52,8 +49,8 @@ public class Controller {
     }
     
     private static TableColumn loadTable(ArrayList resultSet, JTable table, Class<?> classe) {
-        //filasel = -1;
         
+        //variables locals
         Vector columnNames = new Vector();
         Vector data = new Vector();
         
@@ -73,7 +70,6 @@ public class Controller {
         for (Field f : camps) {
             columnNames.addElement(f.getName().substring(3));
         }
-        
         //Afegixo al model de la taula una columna on guardaré l'objecte mostrat a cada fila (amago la columna al final per a que no aparegue a la vista)
         columnNames.addElement("objecte");
         
@@ -144,9 +140,9 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource().equals(view.getCreateProductButton())) {
-                    if(!view.getProductNameTextField().getText().trim().equals("") || !view.getProductTraceMarkTextField().getText().trim().equals("") || !view.getProductPriceTextField().getText().trim().equals(""))
+                    if(!view.getProductIdTextField().getText().trim().equals("") || !view.getProductNameTextField().getText().trim().equals("") || !view.getProductTraceMarkTextField().getText().trim().equals("") || !view.getProductModelTextField().getText().trim().equals("") || !view.getProductPriceTextField().getText().trim().equals(""))
                     model.obtainList();
-                    Product p = new Product(view.getProductNameTextField().getText(),view.getProductTraceMarkTextField().getText(), Integer.valueOf(view.getProductPriceTextField().getText()));
+                    Product p = new Product(view.getProductNameTextField().getText(), view.getProductTraceMarkTextField().getText(), view.getProductModelTextField().getText(), Integer.valueOf(view.getProductPriceTextField().getText()));
                     model.store(p);
                     loadTable((ArrayList) model.obtainList(),view.getProductTable(),Product.class);
                 } else {
@@ -165,7 +161,8 @@ public class Controller {
                     Product modifyProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
                     modifyProduct.set2_product_name(view.getProductNameTextField().getText());
                     modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
-                    modifyProduct.set4_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
+                    modifyProduct.set4_product_model(view.getProductModelTextField().getText());
+                    modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
                     
                     view.getProductTable().removeColumn(loadTableProduct);
                     model.update(modifyProduct);
@@ -196,23 +193,35 @@ public class Controller {
             }
         });
         
-        /*
+        
         view.getProductTable().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (view.getProductTable().getSelectedRow() != -1) {
                     super.mouseClicked(e);
                     DefaultTableModel model = (DefaultTableModel) view.getProductTable().getModel();
-                    model.getValueAt(view.getProductTable().getSelectedRow(), 0);
+                    view.getProductIdTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 0).toString());
                     view.getProductNameTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 1).toString());
                     view.getProductTraceMarkTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 2).toString());
-                    view.getProductPriceTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 3));
+                    view.getProductModelTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 3).toString());
+                    view.getProductPriceTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 4).toString());
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-*/
+        
+        
+        view.getClearProductButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getProductIdTextField().setText("");
+                view.getProductNameTextField().setText("");
+                view.getProductTraceMarkTextField().setText("");
+                view.getProductModelTextField().setText("");
+                view.getProductPriceTextField().setText("");
+            }
+        });
         
         view.getExitButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
