@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -28,6 +29,14 @@ public class Stock {
     @Column(name="stock_total")
     private int _2_stock_total;
 
+    public Stock() {
+        //
+    }
+    
+    public Stock(int _2_stock_total) {
+        this._2_stock_total = _2_stock_total;
+    }
+
     public int get1_stock_id() {
         return _1_stock_id;
     }
@@ -42,5 +51,5 @@ public class Stock {
 
     public void set2_stock_total(int _2_stock_total) {
         this._2_stock_total = _2_stock_total;
-    }  
+    } 
 }

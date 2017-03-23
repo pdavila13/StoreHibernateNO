@@ -55,12 +55,11 @@ public class Product {
         //
     }
 
-    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price, Stock _6_stored) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
         this._4_product_model = _4_product_model;
         this._5_product_price = _5_product_price;
-        this._6_stored = _6_stored;
     }
 
     public int get1_product_id() {
@@ -125,5 +124,5 @@ public class Product {
 
     public void set8_sold(Client _8_sold) {
         this._8_sold = _8_sold;
-    } 
+    }
 }
