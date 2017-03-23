@@ -8,7 +8,6 @@ package storehibernate;
 import controller.Controller;
 import entities.Product;
 import model.ClassDAO;
-import model.Model;
 import views.View;
 
 /**
@@ -16,8 +15,6 @@ import views.View;
  * @author pdavila
  */
 public class StoreHibernate {
-    
-    
 
     /**
      * @param args the command line arguments
@@ -27,7 +24,6 @@ public class StoreHibernate {
         ClassDAO<Product> model = new ClassDAO<>(Product.class);
         View view = new View();
         
-        new Controller(view,model);
-        
+        new Controller(view,model);       
     }
 }

@@ -33,36 +33,40 @@ public class Product {
     @Column(name="product_trademark")
     private String _3_product_trademark;
     
+    @Column(name="product_model")
+    private String _4_product_model;
+    
     @Column(name="product_price")
-    private double _4_product_price;
+    private double _5_product_price;
     
     @Transient
     @Column(name="product_stored_stock")
-    private Stock _5_stored;
+    private Stock _6_stored;
     
     @Transient
     @Column(name="product_belongs_category")
-    private Category _6_belongs;
+    private Category _7_belongs;
     
     @Transient
     @Column(name="product_sold_client")
-    private Client _7_sold;
+    private Client _8_sold;
 
     public Product() {
         //
     }
 
-    public Product(String _2_product_name, String _3_product_trademark, double _4_product_price) {
+    public Product(String _2_product_name, String _3_product_trademark, String _4_product_model, double _5_product_price) {
         this._2_product_name = _2_product_name;
         this._3_product_trademark = _3_product_trademark;
-        this._4_product_price = _4_product_price;
+        this._4_product_model = _4_product_model;
+        this._5_product_price = _5_product_price;
     }
-    
-    public long getProduct_id() {
+
+    public int get1_product_id() {
         return _1_product_id;
     }
 
-    private void set1_product_id(int _1_product_id) {
+    public void set1_product_id(int _1_product_id) {
         this._1_product_id = _1_product_id;
     }
 
@@ -82,36 +86,43 @@ public class Product {
         this._3_product_trademark = _3_product_trademark;
     }
 
-    public double get4_product_price() {
-        return _4_product_price;
+    public String get4_product_model() {
+        return _4_product_model;
     }
 
-    public void set4_product_price(double _4_product_price) {
-        this._4_product_price = _4_product_price;
-    }
-    
-    public Stock get5_stored() {
-        return _5_stored;
+    public void set4_product_model(String _4_product_model) {
+        this._4_product_model = _4_product_model;
     }
 
-    public void set5_stored(Stock _5_stored) {
-        this._5_stored = _5_stored;
+    public double get5_product_price() {
+        return _5_product_price;
     }
 
-    public Category get6_belongs() {
-        return _6_belongs;
+    public void set5_product_price(double _5_product_price) {
+        this._5_product_price = _5_product_price;
     }
 
-    public void set6_belongs(Category _6_belongs) {
-        this._6_belongs = _6_belongs;
+    public Stock get6_stored() {
+        return _6_stored;
     }
 
-    public Client get7_sold() {
-        return _7_sold;
+    public void set6_stored(Stock _6_stored) {
+        this._6_stored = _6_stored;
     }
 
-    public void set7_sold(Client _7_sold) {
-        this._7_sold = _7_sold;
-        _7_sold.set7_buy(this);
+    public Category get7_belongs() {
+        return _7_belongs;
     }
+
+    public void set7_belongs(Category _7_belongs) {
+        this._7_belongs = _7_belongs;
+    }
+
+    public Client get8_sold() {
+        return _8_sold;
+    }
+
+    public void set8_sold(Client _8_sold) {
+        this._8_sold = _8_sold;
+    } 
 }

@@ -49,19 +49,19 @@ public class Client {
         //
     }
     
-    public Client(int _1_client_id, String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
-        this._1_client_id = _1_client_id;
+    public Client(String _2_client_official_id, String _3_client_fullName, String _4_client_email, String _5_client_address, String _6_client_telephoneNumber) {
         this._2_client_official_id = _2_client_official_id;
         this._3_client_fullName = _3_client_fullName;
         this._4_client_email = _4_client_email;
         this._5_client_address = _5_client_address;
         this._6_client_telephoneNumber = _6_client_telephoneNumber;
     }
+
     public int get1_client_id() {
         return _1_client_id;
     }
 
-    private void set1_client_id(int _1_client_id) {
+    public void set1_client_id(int _1_client_id) {
         this._1_client_id = _1_client_id;
     }
 
@@ -103,7 +103,7 @@ public class Client {
 
     public void set6_client_telephoneNumber(String _6_client_telephoneNumber) {
         this._6_client_telephoneNumber = _6_client_telephoneNumber;
-    }        
+    }
 
     public Product get7_buy() {
         return _7_buy;
