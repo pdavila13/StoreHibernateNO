@@ -5,11 +5,11 @@
         <group>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/storehibernate/StoreHibernate.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/views/View.java</file>
-            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/controller/Controller.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Product.java</file>
+            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/controller/Controller.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Stock.java</file>
+            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/storehibernate/StoreHibernate1.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/model/ClassDAO.java</file>
-            <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Client.java</file>
             <file>file:/home/pdavila/NetBeansProjects/StoreHibernate/src/entities/Category.java</file>
         </group>
     </open-files>
