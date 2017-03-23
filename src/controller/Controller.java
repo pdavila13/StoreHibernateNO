@@ -140,10 +140,21 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource().equals(view.getCreateProductButton())) {
-                    if(!view.getProductIdTextField().getText().trim().equals("") || !view.getProductNameTextField().getText().trim().equals("") || !view.getProductTraceMarkTextField().getText().trim().equals("") || !view.getProductModelTextField().getText().trim().equals("") || !view.getProductPriceTextField().getText().trim().equals(""))
+                    if(!view.getProductIdTextField().getText().trim().equals("") ||
+                       !view.getProductNameTextField().getText().trim().equals("") ||
+                       !view.getProductTraceMarkTextField().getText().trim().equals("") ||
+                       !view.getProductModelTextField().getText().trim().equals("") ||
+                       !view.getProductPriceTextField().getText().trim().equals(""))
                     model.obtainList();
-                    Product p = new Product(view.getProductNameTextField().getText(), view.getProductTraceMarkTextField().getText(), view.getProductModelTextField().getText(), Integer.valueOf(view.getProductPriceTextField().getText()));
+                    
+                    Product p = new Product(
+                            view.getProductNameTextField().getText(),
+                            view.getProductTraceMarkTextField().getText(),
+                            view.getProductModelTextField().getText(),
+                            Integer.valueOf(view.getProductPriceTextField().getText())
+                    );
                     model.store(p);
+                    
                     loadTable((ArrayList) model.obtainList(),view.getProductTable(),Product.class);
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
