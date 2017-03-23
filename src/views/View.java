@@ -45,11 +45,13 @@ public class View extends javax.swing.JFrame {
         jLabelProductTraceMark = new javax.swing.JLabel();
         jLabelProductModel = new javax.swing.JLabel();
         jLabelProductPrice = new javax.swing.JLabel();
+        jLabelProductStock = new javax.swing.JLabel();
         jTextFieldProductId = new javax.swing.JTextField();
         jTextFieldProductName = new javax.swing.JTextField();
         jTextFieldProductTraceMark = new javax.swing.JTextField();
         jTextFieldProductModel = new javax.swing.JTextField();
         jTextFieldProductPrice = new javax.swing.JTextField();
+        jTextFieldProductStock = new javax.swing.JTextField();
         jPanelButtons = new javax.swing.JPanel();
         jButtonCreate = new javax.swing.JButton();
         jButtonModify = new javax.swing.JButton();
@@ -82,6 +84,8 @@ public class View extends javax.swing.JFrame {
         jLabelProductModel.setText("Modelo");
 
         jLabelProductPrice.setText("Precio");
+
+        jLabelProductStock.setText("Stock");
 
         jTextFieldProductId.setEnabled(false);
 
@@ -141,14 +145,19 @@ public class View extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabelProductPrice)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelProductLayout.createSequentialGroup()
+                                .addComponent(jTextFieldProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelProductStock))
                             .addGroup(jPanelProductLayout.createSequentialGroup()
                                 .addComponent(jTextFieldProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(80, 80, 80)
-                                .addComponent(jLabelProductTraceMark)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabelProductTraceMark)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(jTextFieldProductStock))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPaneProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -174,7 +183,9 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jLabelProductModel)
                     .addComponent(jTextFieldProductModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelProductPrice)
-                    .addComponent(jTextFieldProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelProductStock)
+                    .addComponent(jTextFieldProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -266,6 +277,7 @@ public class View extends javax.swing.JFrame {
     public JLabel getProductTraceMarkLabel() { return jLabelProductTraceMark; }
     public JLabel getProductModelLabel() { return jLabelProductModel; }
     public JLabel getProductPriceLabel() { return jLabelProductPrice; }
+    public JLabel getProductStockLabel() { return jLabelProductStock; }
      
     public JPanel getProductButtonsPanel() { return jPanelButtons; }
     public JPanel getProductProductPanel() { return jPanelProduct; }
@@ -279,6 +291,7 @@ public class View extends javax.swing.JFrame {
     public JTextField getProductTraceMarkTextField() { return jTextFieldProductTraceMark; }
     public JTextField getProductModelTextField() { return jTextFieldProductModel; }    
     public JTextField getProductPriceTextField() { return jTextFieldProductPrice; }
+    public JTextField getProductStockTextField() { return jTextFieldProductStock; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
@@ -290,6 +303,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelProductModel;
     private javax.swing.JLabel jLabelProductName;
     private javax.swing.JLabel jLabelProductPrice;
+    private javax.swing.JLabel jLabelProductStock;
     private javax.swing.JLabel jLabelProductTraceMark;
     private javax.swing.JLabel jLabelTitle;
     private javax.swing.JPanel jPanelButtons;
@@ -301,6 +315,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldProductModel;
     private javax.swing.JTextField jTextFieldProductName;
     private javax.swing.JTextField jTextFieldProductPrice;
+    private javax.swing.JTextField jTextFieldProductStock;
     private javax.swing.JTextField jTextFieldProductTraceMark;
     // End of variables declaration//GEN-END:variables
 }
