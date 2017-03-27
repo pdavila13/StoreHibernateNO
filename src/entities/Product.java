@@ -40,7 +40,6 @@ public class Product {
     private double _5_product_price;
     
     @OneToOne(cascade=javax.persistence.CascadeType.ALL)
-    @Column(name="product_stored_stock")
     private Stock _6_stored;
     
     @Transient
