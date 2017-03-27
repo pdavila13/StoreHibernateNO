@@ -7,6 +7,7 @@ package storehibernate;
 
 import controller.Controller;
 import entities.Product;
+import entities.Stock;
 import model.ClassDAO;
 import views.View;
 
@@ -21,9 +22,11 @@ public class StoreHibernate {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ClassDAO<Product> model = new ClassDAO<>(Product.class);
+        ClassDAO<Product> modelProduct = new ClassDAO<>(Product.class);
+        ClassDAO<Stock> modelStock = new ClassDAO<>(Stock.class);
+        
         View view = new View();
         
-        new Controller(view,model);       
+        new Controller(view,modelProduct,modelStock);       
     }
 }
