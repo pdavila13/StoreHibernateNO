@@ -52,8 +52,10 @@ public class Controller {
         
         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getProductTable(), Product.class);
         loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getStockTable(), Stock.class);
+        
         controlProduct();
         controlStock();
+        
         exitButton();
     }
     
