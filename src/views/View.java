@@ -52,23 +52,23 @@ public class View extends javax.swing.JFrame {
         jTextFieldProductModel = new javax.swing.JTextField();
         jTextFieldProductPrice = new javax.swing.JTextField();
         jTextFieldProductStock = new javax.swing.JTextField();
-        jPanelButtons = new javax.swing.JPanel();
-        jButtonCreate = new javax.swing.JButton();
-        jButtonModify = new javax.swing.JButton();
-        jButtonDelete = new javax.swing.JButton();
-        jButtonClear = new javax.swing.JButton();
+        jPanelProductButtons = new javax.swing.JPanel();
+        jButtonProductCreate = new javax.swing.JButton();
+        jButtonProductModify = new javax.swing.JButton();
+        jButtonProductDelete = new javax.swing.JButton();
+        jButtonProductClear = new javax.swing.JButton();
         jPanelStock = new javax.swing.JPanel();
         jScrollPaneStock = new javax.swing.JScrollPane();
         jTableStock = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jLabelStockId = new javax.swing.JLabel();
+        jTextFieldStockId = new javax.swing.JTextField();
+        jLabelStockTotal = new javax.swing.JLabel();
+        jTextFieldStockTotal = new javax.swing.JTextField();
+        jPanelStockButtons = new javax.swing.JPanel();
+        jButtonStockCreate = new javax.swing.JButton();
+        jButtonStockModify = new javax.swing.JButton();
+        jButtonStockDelete = new javax.swing.JButton();
+        jButtonStockClear = new javax.swing.JButton();
         jLabelTitle = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
 
@@ -101,38 +101,38 @@ public class View extends javax.swing.JFrame {
 
         jTextFieldProductId.setEnabled(false);
 
-        jButtonCreate.setText("Crear");
+        jButtonProductCreate.setText("Crear");
 
-        jButtonModify.setText("Modificar");
+        jButtonProductModify.setText("Modificar");
 
-        jButtonDelete.setText("Eliminar");
+        jButtonProductDelete.setText("Eliminar");
 
-        jButtonClear.setText("Limpiar");
+        jButtonProductClear.setText("Limpiar");
 
-        javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
-        jPanelButtons.setLayout(jPanelButtonsLayout);
-        jPanelButtonsLayout.setHorizontalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelButtonsLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelProductButtonsLayout = new javax.swing.GroupLayout(jPanelProductButtons);
+        jPanelProductButtons.setLayout(jPanelProductButtonsLayout);
+        jPanelProductButtonsLayout.setHorizontalGroup(
+            jPanelProductButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProductButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModify, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButtonDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelProductButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonProductClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonProductCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonProductModify, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addComponent(jButtonProductDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelButtonsLayout.setVerticalGroup(
-            jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
+        jPanelProductButtonsLayout.setVerticalGroup(
+            jPanelProductButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProductButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButtonCreate)
+                .addComponent(jButtonProductCreate)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonModify)
+                .addComponent(jButtonProductModify)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonDelete)
+                .addComponent(jButtonProductDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jButtonClear)
+                .addComponent(jButtonProductClear)
                 .addContainerGap())
         );
 
@@ -176,7 +176,7 @@ public class View extends javax.swing.JFrame {
                             .addComponent(jTextFieldProductStock)))
                     .addComponent(jScrollPaneProduct))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jPanelButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelProductButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanelProductLayout.setVerticalGroup(
@@ -184,23 +184,18 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanelProductLayout.createSequentialGroup()
                 .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPaneProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelProductButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelProductLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelProductId)
-                            .addComponent(jTextFieldProductId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelProductLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelProductName)
-                            .addComponent(jTextFieldProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelProductLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelProductTraceMark)
-                            .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelProductId)
+                        .addComponent(jTextFieldProductId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelProductName)
+                        .addComponent(jTextFieldProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelProductTraceMark)
+                        .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
                 .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,48 +223,47 @@ public class View extends javax.swing.JFrame {
         ));
         jScrollPaneStock.setViewportView(jTableStock);
 
-        jToggleButton1.setText("Crear");
+        jLabelStockId.setText("Identificador");
 
-        jToggleButton2.setText("Modificar");
+        jTextFieldStockId.setEnabled(false);
 
-        jToggleButton3.setText("Eliminar");
+        jLabelStockTotal.setText("Total");
 
-        jToggleButton4.setText("Limpiar");
+        jButtonStockCreate.setText("Crear");
+        jButtonStockCreate.setEnabled(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jButtonStockModify.setText("Modificar");
+
+        jButtonStockDelete.setText("Eliminar");
+
+        jButtonStockClear.setText("Limpiar");
+
+        javax.swing.GroupLayout jPanelStockButtonsLayout = new javax.swing.GroupLayout(jPanelStockButtons);
+        jPanelStockButtons.setLayout(jPanelStockButtonsLayout);
+        jPanelStockButtonsLayout.setHorizontalGroup(
+            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStockButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jToggleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonStockCreate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStockModify, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(jButtonStockDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonStockClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelStockButtonsLayout.setVerticalGroup(
+            jPanelStockButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelStockButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton1)
+                .addComponent(jButtonStockCreate)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton2)
+                .addComponent(jButtonStockModify)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton3)
+                .addComponent(jButtonStockDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(jToggleButton4)
+                .addComponent(jButtonStockClear)
                 .addContainerGap())
         );
-
-        jLabel1.setText("Identificador");
-
-        jTextField1.setEnabled(false);
-
-        jLabel2.setText("Total");
 
         javax.swing.GroupLayout jPanelStockLayout = new javax.swing.GroupLayout(jPanelStock);
         jPanelStock.setLayout(jPanelStockLayout);
@@ -280,16 +274,16 @@ public class View extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelStockLayout.createSequentialGroup()
                         .addComponent(jScrollPaneStock, javax.swing.GroupLayout.DEFAULT_SIZE, 837, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelStockButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelStockLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelStockId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(148, 148, 148)
-                        .addComponent(jLabel2)
+                        .addComponent(jLabelStockTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -298,13 +292,13 @@ public class View extends javax.swing.JFrame {
             .addGroup(jPanelStockLayout.createSequentialGroup()
                 .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPaneStock, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelStockButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabelStockId)
+                    .addComponent(jTextFieldStockId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelStockTotal))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -384,26 +378,39 @@ public class View extends javax.swing.JFrame {
         });
     }
     
-    public JButton getCreateProductButton() { return jButtonCreate; }
-    public JButton getDeleteProductButton() { return jButtonDelete; }   
-    public JButton getModifyProductButton() { return jButtonModify; } 
-    public JButton getClearProductButton() { return jButtonClear; }
+    public JButton getCreateProductButton() { return jButtonProductCreate; }
+    public JButton getDeleteProductButton() { return jButtonProductDelete; }   
+    public JButton getModifyProductButton() { return jButtonProductModify; } 
+    public JButton getClearProductButton() { return jButtonProductClear; }
+    public JButton getCreateStockButton() { return jButtonStockCreate; }
+    public JButton getDeleteStockButton() { return jButtonStockDelete; }   
+    public JButton getModifyStockButton() { return jButtonStockModify; } 
+    public JButton getClearStockButton() { return jButtonStockClear; }
+    
     public JButton getExitButton() { return exitButton; }
  
-    public JLabel getProductTitleLabel() { return jLabelTitle; }
+    public JLabel getTitleLabel() { return jLabelTitle; }
+ 
     public JLabel getProductIdLabel() { return jLabelProductId; }
     public JLabel getProductNameLabel() { return jLabelProductName; }
     public JLabel getProductTraceMarkLabel() { return jLabelProductTraceMark; }
     public JLabel getProductModelLabel() { return jLabelProductModel; }
     public JLabel getProductPriceLabel() { return jLabelProductPrice; }
     public JLabel getProductStockLabel() { return jLabelProductStock; }
+    public JLabel getStockIdLabel() { return jLabelStockId; }
+    public JLabel getStockTotal() { return jLabelStockTotal; }
      
-    public JPanel getProductButtonsPanel() { return jPanelButtons; }
+    public JPanel getProductButtonsPanel() { return jPanelProductButtons; }
+    public JPanel getStockButtonsPanel() { return jPanelStockButtons; }
+    
     public JPanel getProductProductPanel() { return jPanelProduct; }
+    public JPanel getStockPanel() { return jPanelStock; }
     
     public JScrollPane getProductPanel() { return jScrollPaneProduct; }
+    public JScrollPane getStockStockPanel() { return jScrollPaneStock; }
     
     public JTable getProductTable() { return jTableProduct; }
+    public JTable getStockTable() { return jTableStock; }
     
     public JTextField getProductIdTextField() { return jTextFieldProductId; }
     public JTextField getProductNameTextField() { return jTextFieldProductName; }
@@ -411,42 +418,44 @@ public class View extends javax.swing.JFrame {
     public JTextField getProductModelTextField() { return jTextFieldProductModel; }    
     public JTextField getProductPriceTextField() { return jTextFieldProductPrice; }
     public JTextField getProductStockTextField() { return jTextFieldProductStock; }
+    public JTextField getStockIdTextField() { return jTextFieldStockId; }
+    public JTextField getStockTotalTextField() { return jTextFieldStockTotal; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton jButtonClear;
-    public javax.swing.JButton jButtonCreate;
-    private javax.swing.JButton jButtonDelete;
-    private javax.swing.JButton jButtonModify;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jButtonProductClear;
+    public javax.swing.JButton jButtonProductCreate;
+    private javax.swing.JButton jButtonProductDelete;
+    private javax.swing.JButton jButtonProductModify;
+    private javax.swing.JButton jButtonStockClear;
+    private javax.swing.JButton jButtonStockCreate;
+    private javax.swing.JButton jButtonStockDelete;
+    private javax.swing.JButton jButtonStockModify;
     private javax.swing.JLabel jLabelProductId;
     private javax.swing.JLabel jLabelProductModel;
     private javax.swing.JLabel jLabelProductName;
     private javax.swing.JLabel jLabelProductPrice;
     private javax.swing.JLabel jLabelProductStock;
     private javax.swing.JLabel jLabelProductTraceMark;
+    private javax.swing.JLabel jLabelStockId;
+    private javax.swing.JLabel jLabelStockTotal;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanelButtons;
     private javax.swing.JPanel jPanelProduct;
+    private javax.swing.JPanel jPanelProductButtons;
     private javax.swing.JPanel jPanelStock;
+    private javax.swing.JPanel jPanelStockButtons;
     private javax.swing.JScrollPane jScrollPaneProduct;
     private javax.swing.JScrollPane jScrollPaneStock;
     private javax.swing.JTabbedPane jTabbedPane1Content;
     private javax.swing.JTable jTableProduct;
     private javax.swing.JTable jTableStock;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldProductId;
     private javax.swing.JTextField jTextFieldProductModel;
     private javax.swing.JTextField jTextFieldProductName;
     private javax.swing.JTextField jTextFieldProductPrice;
     private javax.swing.JTextField jTextFieldProductStock;
     private javax.swing.JTextField jTextFieldProductTraceMark;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JTextField jTextFieldStockId;
+    private javax.swing.JTextField jTextFieldStockTotal;
     // End of variables declaration//GEN-END:variables
 }
