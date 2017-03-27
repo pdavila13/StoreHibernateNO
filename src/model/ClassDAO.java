@@ -23,6 +23,10 @@ public class ClassDAO<T> {
     
     private Class p;
     
+    public ClassDAO() {
+        //
+    }
+    
     public ClassDAO(Class<T> p) {
         this.p = p;
         this.session = session;
