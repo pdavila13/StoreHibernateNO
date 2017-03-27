@@ -7,6 +7,7 @@ package controller;
 
 
 import entities.Product;
+import entities.Stock;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -36,16 +37,214 @@ import views.View;
 public class Controller {
 
     private View view;
-    private ClassDAO<Product> model;
+    
+    private ClassDAO<Product> modelProduct;
+    private ClassDAO<Stock> modelStock;
+    
     private TableColumn loadTableProduct;
+    private TableColumn loadTableStock;
     private int filasel = -1;
 
-    public Controller(View view, ClassDAO<Product> model) {
+    public Controller(View view, ClassDAO<Product> modelProduct, ClassDAO<Stock> modelStock) {
         this.view = view;
-        this.model = model;
+        this.modelProduct = modelProduct;
+        this.modelStock = modelStock;
         
-        loadTableProduct = loadTable((ArrayList) model.obtainList(), view.getProductTable(), Product.class);
-        control();
+        loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getProductTable(), Product.class);
+        loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getStockTable(), Stock.class);
+        controlProduct();
+        controlStock();
+        exitButton();
+    }
+    
+    private void controlProduct() {
+        view.getCreateProductButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource().equals(view.getCreateProductButton())) {
+                    if(!view.getProductIdTextField().getText().trim().equals("") ||
+                       !view.getProductNameTextField().getText().trim().equals("") ||
+                       !view.getProductTraceMarkTextField().getText().trim().equals("") ||
+                       !view.getProductModelTextField().getText().trim().equals("") ||
+                       !view.getProductPriceTextField().getText().trim().equals(""))
+                    modelProduct.obtainList();
+                    
+                    Product p = new Product(
+                            view.getProductNameTextField().getText(),
+                            view.getProductTraceMarkTextField().getText(),
+                            view.getProductModelTextField().getText(),
+                            Integer.valueOf(view.getProductPriceTextField().getText())
+                    );
+                    modelProduct.store(p);
+                    
+                    loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getModifyProductButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getProductTable().getColumnModel();
+                if (view.getProductTable().getSelectedRow() != -1) {
+                    view.getProductTable().addColumn(loadTableProduct);
+                    DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
+                    Product modifyProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
+                    modifyProduct.set2_product_name(view.getProductNameTextField().getText());
+                    modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
+                    modifyProduct.set4_product_model(view.getProductModelTextField().getText());
+                    modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
+                    
+                    view.getProductTable().removeColumn(loadTableProduct);
+                    modelProduct.update(modifyProduct);
+                    view.getProductTable().addColumn(loadTableProduct);
+                    loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un producto para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getDeleteProductButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getProductTable().getColumnModel();
+                if (view.getProductTable().getSelectedRow() != -1) {
+                    DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
+                    
+                    Product deleteProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
+                    view.getProductTable().removeColumn(loadTableProduct);
+                    modelProduct.destroy(deleteProduct);
+                    
+                    view.getProductTable().addColumn(loadTableProduct);
+                    loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccciona un producto para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getProductTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (view.getProductTable().getSelectedRow() != -1) {
+                    super.mouseClicked(e);
+                    DefaultTableModel model = (DefaultTableModel) view.getProductTable().getModel();
+                    view.getProductIdTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 0).toString());
+                    view.getProductNameTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 1).toString());
+                    view.getProductTraceMarkTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 2).toString());
+                    view.getProductModelTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 3).toString());
+                    view.getProductPriceTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 4).toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getClearProductButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getProductIdTextField().setText("");
+                view.getProductNameTextField().setText("");
+                view.getProductTraceMarkTextField().setText("");
+                view.getProductModelTextField().setText("");
+                view.getProductPriceTextField().setText("");
+                view.getProductStockTextField().setText("");
+            }
+        });
+    }
+    
+    private void controlStock() {
+        view.getCreateStockButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource().equals(view.getCreateStockButton())) {
+                    if(!view.getStockIdTextField().getText().trim().equals("") ||
+                       !view.getStockTotalTextField().getText().trim().equals(""))
+                    modelStock.obtainList();
+                    
+                    Stock s = new Stock(
+                            Integer.valueOf(view.getStockTotalTextField().getText())
+                    );
+                    modelStock.store(s);
+                    
+                    loadTable((ArrayList) modelStock.obtainList(),view.getStockTable(),Stock.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No has introducido ningun stock", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getModifyStockButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getStockTable().getColumnModel();
+                if (view.getStockTable().getSelectedRow() != -1) {
+                    view.getStockTable().addColumn(loadTableStock);
+                    DefaultTableModel tm = (DefaultTableModel) view.getStockTable().getModel();
+                    Stock modifyStock = (Stock) tm.getValueAt(view.getStockTable().getSelectedRow(), tm.getColumnCount() -1);
+                    modifyStock.set2_stock_total(Integer.valueOf(view.getStockTotalTextField().getText()));
+                    
+                    view.getStockTable().removeColumn(loadTableStock);
+                    modelStock.update(modifyStock);
+                    view.getStockTable().addColumn(loadTableStock);
+                    loadTableStock = loadTable((ArrayList) modelStock.obtainList(),view.getStockTable(),Stock.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un stcok para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getDeleteStockButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TableColumnModel tcm = (TableColumnModel) view.getStockTable().getColumnModel();
+                if (view.getStockTable().getSelectedRow() != -1) {
+                    DefaultTableModel tm = (DefaultTableModel) view.getStockTable().getModel();
+                    
+                    Stock deleteStock = (Stock) tm.getValueAt(view.getStockTable().getSelectedRow(), tm.getColumnCount() -1);
+                    view.getStockTable().removeColumn(loadTableStock);
+                    modelStock.destroy(deleteStock);
+                    
+                    view.getStockTable().addColumn(loadTableStock);
+                    loadTableStock = loadTable((ArrayList) modelStock.obtainList(),view.getStockTable(),Stock.class);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccciona un stock para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getStockTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (view.getStockTable().getSelectedRow() != -1) {
+                    super.mouseClicked(e);
+                    DefaultTableModel model = (DefaultTableModel) view.getStockTable().getModel();
+                    view.getStockIdTextField().setText(model.getValueAt(Integer.valueOf(view.getStockTable().getSelectedRow()), 0).toString());
+                    view.getStockTotalTextField().setText(model.getValueAt(Integer.valueOf(view.getStockTable().getSelectedRow()), 1).toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un stock de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        view.getClearStockButton().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                view.getStockIdTextField().setText("");
+                view.getStockTotalTextField().setText("");
+            }
+        });
+    }
+    
+    public void exitButton() {
+        view.getExitButton().addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
     }
     
     private static TableColumn loadTable(ArrayList resultSet, JTable table, Class<?> classe) {
@@ -133,112 +332,6 @@ public class Controller {
         }
         
         return columna;
-    }
-    
-    private void control() {
-        view.getCreateProductButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource().equals(view.getCreateProductButton())) {
-                    if(!view.getProductIdTextField().getText().trim().equals("") ||
-                       !view.getProductNameTextField().getText().trim().equals("") ||
-                       !view.getProductTraceMarkTextField().getText().trim().equals("") ||
-                       !view.getProductModelTextField().getText().trim().equals("") ||
-                       !view.getProductPriceTextField().getText().trim().equals(""))
-                    model.obtainList();
-                    
-                    Product p = new Product(
-                            view.getProductNameTextField().getText(),
-                            view.getProductTraceMarkTextField().getText(),
-                            view.getProductModelTextField().getText(),
-                            Integer.valueOf(view.getProductPriceTextField().getText())
-                    );
-                    model.store(p);
-                    
-                    loadTable((ArrayList) model.obtainList(),view.getProductTable(),Product.class);
-                } else {
-                    JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        view.getModifyProductButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TableColumnModel tcm = (TableColumnModel) view.getProductTable().getColumnModel();
-                if (view.getProductTable().getSelectedRow() != -1) {
-                    view.getProductTable().addColumn(loadTableProduct);
-                    DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
-                    Product modifyProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
-                    modifyProduct.set2_product_name(view.getProductNameTextField().getText());
-                    modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
-                    modifyProduct.set4_product_model(view.getProductModelTextField().getText());
-                    modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
-                    
-                    view.getProductTable().removeColumn(loadTableProduct);
-                    model.update(modifyProduct);
-                    view.getProductTable().addColumn(loadTableProduct);
-                    loadTableProduct = loadTable((ArrayList) model.obtainList(),view.getProductTable(),Product.class);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona un producto para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        view.getDeleteProductButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TableColumnModel tcm = (TableColumnModel) view.getProductTable().getColumnModel();
-                if (view.getProductTable().getSelectedRow() != -1) {
-                    DefaultTableModel tm = (DefaultTableModel) view.getProductTable().getModel();
-                    
-                    Product deleteProduct = (Product) tm.getValueAt(view.getProductTable().getSelectedRow(), tm.getColumnCount() -1);
-                    view.getProductTable().removeColumn(loadTableProduct);
-                    model.destroy(deleteProduct);
-                    
-                    view.getProductTable().addColumn(loadTableProduct);
-                    loadTableProduct = loadTable((ArrayList) model.obtainList(),view.getProductTable(),Product.class);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Seleccciona un producto para eliminarlo", "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        
-        view.getProductTable().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (view.getProductTable().getSelectedRow() != -1) {
-                    super.mouseClicked(e);
-                    DefaultTableModel model = (DefaultTableModel) view.getProductTable().getModel();
-                    view.getProductIdTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 0).toString());
-                    view.getProductNameTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 1).toString());
-                    view.getProductTraceMarkTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 2).toString());
-                    view.getProductModelTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 3).toString());
-                    view.getProductPriceTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 4).toString());
-                } else {
-                    JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-        
-        
-        view.getClearProductButton().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                view.getProductIdTextField().setText("");
-                view.getProductNameTextField().setText("");
-                view.getProductTraceMarkTextField().setText("");
-                view.getProductModelTextField().setText("");
-                view.getProductPriceTextField().setText("");
-            }
-        });
-        
-        view.getExitButton().addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
     }
     
     public static class OrdenarMetodeClasseAlfabeticament implements Comparator {
