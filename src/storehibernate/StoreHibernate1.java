@@ -32,13 +32,14 @@ public class StoreHibernate1 {
         long destroy_stock_id = 0;
         
         //Created
-        Product p1 = new Product("Processador","INTEL","7500",153.56);
-        Product p2 = new Product("Motherboard","ASUS","970",197.23);
-        Product p3 = new Product("Hard disk","WD","ST96304826",76.80);
-        
         Stock s1 = new Stock(12);
         Stock s2 = new Stock(24);
         Stock s3 = new Stock(46);
+        
+        //Created
+        Product p1 = new Product("Processador","INTEL","7500",153,s1);
+        Product p2 = new Product("Motherboard","ASUS","970",197,s2);
+        Product p3 = new Product("Hard disk","WD","ST96304826",76,s3);
         
         //Save
         destroy_product_id = ClassProductDAO.store(p1);
