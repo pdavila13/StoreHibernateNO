@@ -52,4 +52,11 @@ public class Stock {
     public void set2_stock_total(int _2_stock_total) {
         this._2_stock_total = _2_stock_total;
     } 
+
+    @Override
+    public String toString() {
+        return " " + _2_stock_total;
+    }
+    
+    
 }

@@ -6,6 +6,7 @@
 package views;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -51,12 +52,12 @@ public class View extends javax.swing.JFrame {
         jTextFieldProductTraceMark = new javax.swing.JTextField();
         jTextFieldProductModel = new javax.swing.JTextField();
         jTextFieldProductPrice = new javax.swing.JTextField();
-        jTextFieldProductStock = new javax.swing.JTextField();
         jPanelProductButtons = new javax.swing.JPanel();
         jButtonProductCreate = new javax.swing.JButton();
         jButtonProductModify = new javax.swing.JButton();
         jButtonProductDelete = new javax.swing.JButton();
         jButtonProductClear = new javax.swing.JButton();
+        jComboBoxProductStock = new javax.swing.JComboBox<>();
         jPanelStock = new javax.swing.JPanel();
         jScrollPaneStock = new javax.swing.JScrollPane();
         jTableStock = new javax.swing.JTable();
@@ -136,6 +137,8 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jComboBoxProductStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "null" }));
+
         javax.swing.GroupLayout jPanelProductLayout = new javax.swing.GroupLayout(jPanelProduct);
         jPanelProduct.setLayout(jPanelProductLayout);
         jPanelProductLayout.setHorizontalGroup(
@@ -173,7 +176,7 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(jTextFieldProductStock)))
+                            .addComponent(jComboBoxProductStock, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPaneProduct))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jPanelProductButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,16 +199,16 @@ public class View extends javax.swing.JFrame {
                     .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelProductTraceMark)
                         .addComponent(jTextFieldProductTraceMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24)
+                .addGap(21, 21, 21)
                 .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelProductModel)
                         .addComponent(jLabelProductPrice)
                         .addComponent(jTextFieldProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelProductStock)
-                        .addComponent(jTextFieldProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextFieldProductModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1Content.addTab("Productos", jPanelProduct);
@@ -230,7 +233,6 @@ public class View extends javax.swing.JFrame {
         jLabelStockTotal.setText("Total");
 
         jButtonStockCreate.setText("Crear");
-        jButtonStockCreate.setEnabled(false);
 
         jButtonStockModify.setText("Modificar");
 
@@ -417,9 +419,11 @@ public class View extends javax.swing.JFrame {
     public JTextField getProductTraceMarkTextField() { return jTextFieldProductTraceMark; }
     public JTextField getProductModelTextField() { return jTextFieldProductModel; }    
     public JTextField getProductPriceTextField() { return jTextFieldProductPrice; }
-    public JTextField getProductStockTextField() { return jTextFieldProductStock; }
+    //public JTextField getProductStockTextField() { return jTextFieldProductStock; }
     public JTextField getStockIdTextField() { return jTextFieldStockId; }
     public JTextField getStockTotalTextField() { return jTextFieldStockTotal; }
+    
+    public JComboBox getProductStockComboBox() { return jComboBoxProductStock; }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
@@ -431,6 +435,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton jButtonStockCreate;
     private javax.swing.JButton jButtonStockDelete;
     private javax.swing.JButton jButtonStockModify;
+    private javax.swing.JComboBox<String> jComboBoxProductStock;
     private javax.swing.JLabel jLabelProductId;
     private javax.swing.JLabel jLabelProductModel;
     private javax.swing.JLabel jLabelProductName;
@@ -453,7 +458,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldProductModel;
     private javax.swing.JTextField jTextFieldProductName;
     private javax.swing.JTextField jTextFieldProductPrice;
-    private javax.swing.JTextField jTextFieldProductStock;
     private javax.swing.JTextField jTextFieldProductTraceMark;
     private javax.swing.JTextField jTextFieldStockId;
     private javax.swing.JTextField jTextFieldStockTotal;

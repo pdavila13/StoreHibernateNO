@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -52,7 +54,7 @@ public class Controller {
         
         loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(), view.getProductTable(), Product.class);
         loadTableStock = loadTable((ArrayList) modelStock.obtainList(), view.getStockTable(), Stock.class);
-        
+        loadCombo((ArrayList)modelStock.obtainList(),view.getProductStockComboBox());
         controlProduct();
         controlStock();
         
@@ -75,11 +77,13 @@ public class Controller {
                             view.getProductNameTextField().getText(),
                             view.getProductTraceMarkTextField().getText(),
                             view.getProductModelTextField().getText(),
-                            Integer.valueOf(view.getProductPriceTextField().getText())
+                            Integer.valueOf(view.getProductPriceTextField().getText()),
+                            (Stock) view.getProductStockComboBox().getSelectedItem()
                     );
                     modelProduct.store(p);
                     
                     loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ningun producto", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -98,11 +102,13 @@ public class Controller {
                     modifyProduct.set3_product_trademark(view.getProductTraceMarkTextField().getText());
                     modifyProduct.set4_product_model(view.getProductModelTextField().getText());
                     modifyProduct.set5_product_price(Integer.valueOf(view.getProductPriceTextField().getText()));
+                    modifyProduct.set6_stored((Stock) view.getProductStockComboBox().getSelectedItem());
                     
                     view.getProductTable().removeColumn(loadTableProduct);
                     modelProduct.update(modifyProduct);
                     view.getProductTable().addColumn(loadTableProduct);
                     loadTableProduct = loadTable((ArrayList) modelProduct.obtainList(),view.getProductTable(),Product.class);
+                    loadCombo((ArrayList)modelStock.obtainList(),view.getProductStockComboBox());
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un producto para modificarlo", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -139,6 +145,7 @@ public class Controller {
                     view.getProductTraceMarkTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 2).toString());
                     view.getProductModelTextField().setText(model.getValueAt(view.getProductTable().getSelectedRow(), 3).toString());
                     view.getProductPriceTextField().setText(model.getValueAt(Integer.valueOf(view.getProductTable().getSelectedRow()), 4).toString());
+                    view.getProductStockComboBox().setSelectedItem(model.getValueAt(view.getProductTable().getSelectedRow(), 5).toString());
                 } else {
                     JOptionPane.showMessageDialog(null, "Selecciona un producto de la tabla", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -153,7 +160,6 @@ public class Controller {
                 view.getProductTraceMarkTextField().setText("");
                 view.getProductModelTextField().setText("");
                 view.getProductPriceTextField().setText("");
-                view.getProductStockTextField().setText("");
             }
         });
     }
@@ -173,6 +179,7 @@ public class Controller {
                     modelStock.store(s);
                     
                     loadTable((ArrayList) modelStock.obtainList(),view.getStockTable(),Stock.class);
+                    loadCombo((ArrayList)modelStock.obtainList(),view.getProductStockComboBox());
                 } else {
                     JOptionPane.showMessageDialog(null, "No has introducido ningun stock", "ERROR",JOptionPane.ERROR_MESSAGE);
                 }
@@ -249,23 +256,24 @@ public class Controller {
         });
     }
     
+    //Mètode que carrega els objectes continguts a l'ArrayList i el mostra a la JTable. La classe indica de quin tipo són els objectes de l'ArrayList
+    //Si volem que es pugue modificar les dades directament des de la taula hauríem d'usar el model instància de la classe ModelCanvisBD, que varia d'una BD a una altra
+    //Esta versió afegix a la darrera columna de la taula l'objecte mostrat a la mateixa de manera que el podrem recuperar fàcilment per fer updates, deletes, etc...
+    //Esta columna extra no apareix a la taula ja que la borrem, però la retornem per poder-la afegir quan sigue necessari
     private static TableColumn loadTable(ArrayList resultSet, JTable table, Class<?> classe) {
-        
+
         //variables locals
         Vector columnNames = new Vector();
         Vector data = new Vector();
-        
         //Per poder actualitzar la BD des de la taula usaríem el model comentat
         //ModelCanvisBD model;
         DefaultTableModel model;
         
         //Anotem el nº de camps de la classe
         Field[] camps = classe.getDeclaredFields();
-        
         //Ordenem els camps alfabèticament
         Arrays.sort(camps, new OrdenarCampClasseAlfabeticament());
         int ncamps = camps.length;
-        
         //Recorrem els camps de la classe i posem els seus noms com a columnes de la taula
         //Com hem hagut de posar _numero_ davant el nom dels camps, mostrem el nom a partir de la 4ª lletra 
         for (Field f : camps) {
@@ -273,7 +281,6 @@ public class Controller {
         }
         //Afegixo al model de la taula una columna on guardaré l'objecte mostrat a cada fila (amago la columna al final per a que no aparegue a la vista)
         columnNames.addElement("objecte");
-        
         //Si hi ha algun element a l'arraylist omplim la taula
         if (resultSet.size() != 0) {
 
@@ -310,7 +317,6 @@ public class Controller {
 
                 //Aquí guardo l'objecte sencer a la darrera columna
                 row.addElement(m);
-                
                 //Finalment afegixo la fila a les dades
                 data.addElement(row);
             }
@@ -318,12 +324,12 @@ public class Controller {
 
         //Utilitzem el model que permet actualitzar la BD des de la taula
         //model = new ModelCanvisBD(data, columnNames, Model.getConnexio(), columnNames.size() - 1);
-        model=new DefaultTableModel(data, columnNames);
+        model = new DefaultTableModel(data, columnNames);
         table.setModel(model);
 
         //Borro la darrera columna per a que no aparegue a la vista, però abans la guardo en una variable que al final serà el que retorna el mètode
         TableColumnModel tcm = table.getColumnModel();
-        TableColumn columna=tcm.getColumn(tcm.getColumnCount() - 1);
+        TableColumn columna = tcm.getColumn(tcm.getColumnCount() - 1);
         tcm.removeColumn(columna);
 
         //Fixo l'amplada de les columnes que sí es mostren
@@ -334,6 +340,11 @@ public class Controller {
         }
         
         return columna;
+    }
+    
+    //per carregar un JComboBox a partir d'un ArrayList que conté les dades
+    public void loadCombo(ArrayList resultSet, JComboBox combo) {
+        combo.setModel(new DefaultComboBoxModel((resultSet!=null?resultSet.toArray():new Object[]{})));
     }
     
     public static class OrdenarMetodeClasseAlfabeticament implements Comparator {

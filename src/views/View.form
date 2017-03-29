@@ -117,7 +117,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTextFieldProductTraceMark" pref="150" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldProductStock" max="32767" attributes="0"/>
+                                  <Component id="jComboBoxProductStock" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jScrollPaneProduct" max="32767" attributes="0"/>
@@ -150,18 +150,18 @@
                               <Component id="jTextFieldProductTraceMark" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelProductModel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelProductPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextFieldProductPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelProductStock" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldProductStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxProductStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jTextFieldProductModel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -258,8 +258,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldProductPrice">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextFieldProductStock">
-            </Component>
             <Container class="javax.swing.JPanel" name="jPanelProductButtons">
 
               <Layout>
@@ -319,6 +317,18 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JComboBox" name="jComboBoxProductStock">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="1">
+                    <StringItem index="0" value="null"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelStock">
@@ -451,7 +461,6 @@
                 <Component class="javax.swing.JButton" name="jButtonStockCreate">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Crear"/>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonStockModify">
