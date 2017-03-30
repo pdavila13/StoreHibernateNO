@@ -70,6 +70,9 @@ public class View extends javax.swing.JFrame {
         jButtonStockModify = new javax.swing.JButton();
         jButtonStockDelete = new javax.swing.JButton();
         jButtonStockClear = new javax.swing.JButton();
+        jPanelCategory = new javax.swing.JPanel();
+        jScrollPaneCategory = new javax.swing.JScrollPane();
+        jTableCategory = new javax.swing.JTable();
         jLabelTitle = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
 
@@ -306,6 +309,36 @@ public class View extends javax.swing.JFrame {
 
         jTabbedPane1Content.addTab("Stock", jPanelStock);
 
+        jTableCategory.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPaneCategory.setViewportView(jTableCategory);
+
+        javax.swing.GroupLayout jPanelCategoryLayout = new javax.swing.GroupLayout(jPanelCategory);
+        jPanelCategory.setLayout(jPanelCategoryLayout);
+        jPanelCategoryLayout.setHorizontalGroup(
+            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                .addComponent(jScrollPaneCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 833, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 166, Short.MAX_VALUE))
+        );
+        jPanelCategoryLayout.setVerticalGroup(
+            jPanelCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCategoryLayout.createSequentialGroup()
+                .addComponent(jScrollPaneCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 103, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1Content.addTab("Category", jPanelCategory);
+
         jLabelTitle.setText("VENTAS");
 
         exitButton.setText("Salir");
@@ -445,13 +478,16 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelStockId;
     private javax.swing.JLabel jLabelStockTotal;
     private javax.swing.JLabel jLabelTitle;
+    private javax.swing.JPanel jPanelCategory;
     private javax.swing.JPanel jPanelProduct;
     private javax.swing.JPanel jPanelProductButtons;
     private javax.swing.JPanel jPanelStock;
     private javax.swing.JPanel jPanelStockButtons;
+    private javax.swing.JScrollPane jScrollPaneCategory;
     private javax.swing.JScrollPane jScrollPaneProduct;
     private javax.swing.JScrollPane jScrollPaneStock;
     private javax.swing.JTabbedPane jTabbedPane1Content;
+    private javax.swing.JTable jTableCategory;
     private javax.swing.JTable jTableProduct;
     private javax.swing.JTable jTableStock;
     private javax.swing.JTextField jTextFieldProductId;
