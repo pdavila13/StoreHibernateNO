@@ -5,6 +5,7 @@
  */
 package entities;
 
+import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +44,7 @@ public class Client {
     
     @Transient
     @Column(name="client_buy_product")
-    private Product _7_buy;
+    private ArrayList<Product> _7_buy = new ArrayList<>();
 
     public Client () {
         //
@@ -105,11 +106,11 @@ public class Client {
         this._6_client_telephoneNumber = _6_client_telephoneNumber;
     }
 
-    public Product get7_buy() {
+    public ArrayList<Product> get7_buy() {
         return _7_buy;
     }
 
-    public void set7_buy(Product _7_buy) {
+    public void set7_buy(ArrayList<Product> _7_buy) {
         this._7_buy = _7_buy;
     }
 }
