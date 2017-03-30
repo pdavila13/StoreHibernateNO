@@ -14,7 +14,7 @@ import model.ClassDAO;
  *
  * @author pdavila
  */
-public class StoreHibernate1 {
+public class StoreHibernateOneToOne {
 
     /**
      * @param args the command line arguments
