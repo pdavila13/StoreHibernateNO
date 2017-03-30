@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -44,8 +46,8 @@ public class Product {
     @OneToOne(cascade=javax.persistence.CascadeType.ALL)
     private Stock _6_stored;
     
-    @Transient
-    @Column(name="product_belongs_category")
+    @OneToMany(cascade=javax.persistence.CascadeType.ALL)
+    @JoinColumn(name="product_belongs_category_id")
     private List<Category> _7_belongs = new ArrayList<>() ;
     
     @Transient
